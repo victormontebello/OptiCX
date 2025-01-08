@@ -6,6 +6,7 @@ namespace Core.Directors;
 
 public class DataCollectorDirector(DataCollectorBuilder builder)
 {
+    //EXAMPLE
     public DataCollector CreatePerformanceAnalysis()
     {
         builder.Reset();
