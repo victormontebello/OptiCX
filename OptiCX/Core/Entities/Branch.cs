@@ -1,10 +1,10 @@
 ﻿namespace Core.Entities;
 
-public class User
+public class Branch
 {
     public int Id { get; set; }
     public string Name { get; set; }
+    public Address Address { get; set; }
     public string Email { get; set; }
-    public string Password { get; set; }
-    public string Token { get; set; }
+    public string Phone { get; set; }
 }
