@@ -2,6 +2,7 @@
 
 public class Address
 {
+    public int Id {get; set;}
     public int BranchId { get; set; }
     public string Street { get; set; }
     public string City { get; set; }
