@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Core.Entities.Components;
 
 namespace Core.Entities;
 
@@ -8,5 +9,5 @@ public class DataCollector
     public string Title;
     public DateTime DateOfCollect;
     public string Description;
-    public List<DataType> Components;
+    public List<ComponentBase> Components;
 }
