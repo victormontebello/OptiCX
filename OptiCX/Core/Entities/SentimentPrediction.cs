@@ -1,7 +1,10 @@
+using Microsoft.ML.Data;
+
 namespace Core.Entities;
 
 public class SentimentPrediction
 {
+    [ColumnName("PredictedLabel")]
     public bool Prediction { get; set; }
 
     public float Probability { get; set; }
