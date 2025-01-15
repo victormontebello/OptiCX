@@ -7,10 +7,12 @@ namespace Analysis
     public partial class Model
     {
         public const string RetrainFilePath =  @"C:\Users\Usuario\victorpessoal\sentiment labelled sentences\yelp_labelled.txt";
-        public const char RetrainSeparatorChar = '	';
+        public const string PathCombine = @"F:\ML\stock_data.csv";
+        public const char RetrainSeparatorChar = ',';
         public const bool RetrainHasHeader =  true;
+        public const bool allowQuotedStrings =  true;
 
-        public static void Train(string outputModelPath, string inputDataFilePath = RetrainFilePath, char separatorChar = RetrainSeparatorChar, bool hasHeader = RetrainHasHeader)
+        public static void Train(string outputModelPath, string inputDataFilePath = PathCombine, char separatorChar = RetrainSeparatorChar, bool hasHeader = RetrainHasHeader)
         {
             var mlContext = new MLContext();
 
@@ -21,7 +23,7 @@ namespace Analysis
 
         public static IDataView LoadIDataViewFromFile(MLContext mlContext, string inputDataFilePath, char separatorChar, bool hasHeader)
         {
-            return mlContext.Data.LoadFromTextFile<ModelInput>(inputDataFilePath, separatorChar, hasHeader);
+            return mlContext.Data.LoadFromTextFile<ModelInput>(inputDataFilePath, separatorChar, hasHeader, allowQuotedStrings);
         }
 
         public static void SaveModel(MLContext mlContext, ITransformer model, IDataView data, string modelSavePath)
@@ -44,7 +46,6 @@ namespace Analysis
 
         public static IEstimator<ITransformer> BuildPipeline(MLContext mlContext)
         {
-            // Data process configuration with pipeline data transformations
             var pipeline = mlContext.Transforms.Text.FeaturizeText(inputColumnName:@"FeedBack",outputColumnName:@"FeedBack")      
                                     .Append(mlContext.Transforms.Concatenate(@"Features", new []{@"FeedBack"}))      
                                     .Append(mlContext.Transforms.Conversion.MapValueToKey(outputColumnName:@"Sentiment",inputColumnName:@"Sentiment",addKeyValueAnnotationsAsText:false))      

@@ -8,8 +8,10 @@ namespace Analysis
         public class ModelInput
         {
             [LoadColumn(0)]
+            [ColumnName(@"FeedBack")]
             public string FeedBack { get; set; }
-
+            
+            [ColumnName(@"Sentiment")]
             [LoadColumn(1)]
             public float Sentiment { get; set; }
 
@@ -42,7 +44,8 @@ namespace Analysis
         private static PredictionEngine<ModelInput, ModelOutput> CreatePredictEngine()
         {
             var mlContext = new MLContext();
-            ITransformer mlModel = mlContext.Model.Load(MLNetModelPath, out var _);
+            var info = new FileInfo("Model.mlnet");
+            ITransformer mlModel = mlContext.Model.Load(info.FullName, out var _);
             return mlContext.Model.CreatePredictionEngine<ModelInput, ModelOutput>(mlModel);
         }
 

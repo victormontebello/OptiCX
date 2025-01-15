@@ -5,7 +5,7 @@ namespace Analysis.Test
         [Fact]
         public async Task ModelTrainingTest()
         {
-            var path = @"C:\Users\Usuario\victorpessoal\sentiment labelled sentences\model.zip";
+            var path = @"F:\ML\model.zip";
             var data = new Model.ModelInput { FeedBack = "this is aweasome!" };
             Model.Train(path);
             Assert.True(File.Exists(path));
@@ -14,7 +14,7 @@ namespace Analysis.Test
         [Fact]
         public async Task PredictTest()
         {
-            var path = @"C:\Users\Usuario\victorpessoal\sentiment labelled sentences\model.zip";
+            var path = @"F:\ML\model.zip";
             var data = new Model.ModelInput { FeedBack = "this is aweasome!" };
             Model.Train(path);
 
