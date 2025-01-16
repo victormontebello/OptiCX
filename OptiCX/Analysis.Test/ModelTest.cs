@@ -1,3 +1,5 @@
+using Core.Files;
+
 namespace Analysis.Test
 {
     public class ModelTest
@@ -16,7 +18,9 @@ namespace Analysis.Test
         {
             var path = @"F:\ML\model.zip";
             var data = new Model.ModelInput { FeedBack = "this is aweasome!" };
-            Model.Train(path);
+            var s3 = new S3Service();
+            await s3.GetCSV("F:\\cfg", "stock_data.csv");
+            Model.Train(path, "F:\\cfg\\stock_data.csv");
 
             var values = Model.Predict(data).Score;
             Assert.True(values[0] > values[1]);
