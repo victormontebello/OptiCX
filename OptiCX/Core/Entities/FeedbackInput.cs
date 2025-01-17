@@ -2,11 +2,13 @@ using Microsoft.ML.Data;
 
 namespace Core.Entities;
 
-public class SentimentData
+public class FeedbackInput
 {
     [LoadColumn(0)]
+    [ColumnName(@"Text")]
     public string Text { get; set; }
 
     [LoadColumn(1)]
-    public bool Sentiment { get; set; }
+    [ColumnName(@"Sentiment")]
+    public string Sentiment { get; set; }
 }

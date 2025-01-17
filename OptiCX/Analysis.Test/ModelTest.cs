@@ -1,4 +1,5 @@
 
+using Core.Entities;
 using Infraestructure.S3;
 
 namespace Analysis.Test
@@ -12,7 +13,6 @@ namespace Analysis.Test
         public async Task ModelTrainingTest()
         {
             var path = @"F:\ML\model.zip";
-            var data = new AnalysisModel.ModelInput { Text = "this is aweasome!" };
             AnalysisModel.Train(path);
             Assert.True(File.Exists(path));
         }
@@ -21,9 +21,9 @@ namespace Analysis.Test
         public async Task PredictTest()
         {
             var path = @"F:\ML\model.zip";
-            var data = new AnalysisModel.ModelInput { Text = "this is aweasome!" };
-            AnalysisModel.Train(path, "F:\\cfg\\stock_data.csv");
+            var data = new FeedbackInput { Text = "this is aweasome!" };
             await LoadFile(Path, "stock_data.csv");
+            AnalysisModel.Train(path, $"{Path}\\stock_data.csv");
 
             var values = AnalysisModel.Predict(data).Score;
             Assert.True(values[0] > values[1]);

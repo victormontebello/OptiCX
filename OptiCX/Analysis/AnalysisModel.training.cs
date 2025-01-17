@@ -1,4 +1,5 @@
-﻿using Microsoft.ML.Trainers;
+﻿using Core.Entities;
+using Microsoft.ML.Trainers;
 using Microsoft.ML;
 
 namespace Analysis
@@ -20,7 +21,7 @@ namespace Analysis
 
         public static IDataView LoadIDataViewFromFile(MLContext mlContext, string inputDataFilePath, char separatorChar, bool hasHeader)
         {
-            return mlContext.Data.LoadFromTextFile<ModelInput>(inputDataFilePath, separatorChar, hasHeader);
+            return mlContext.Data.LoadFromTextFile<FeedbackInput>(inputDataFilePath, separatorChar, hasHeader);
         }
 
         public static void SaveModel(MLContext mlContext, ITransformer model, IDataView data, string modelSavePath)

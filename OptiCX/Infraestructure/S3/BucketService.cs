@@ -7,7 +7,7 @@ namespace Infraestructure.S3;
 
 public class BucketService : AmazonResource 
 {
-    public async Task GetObject(string pathToSave, string key)
+    public async Task<bool> GetObject(string pathToSave, string key)
     {
         basePath = "S3_OPTICX_";
         var client = new AmazonS3Client(Credentials, RegionEndpoint.USEast2);
@@ -17,16 +17,17 @@ public class BucketService : AmazonResource
             Key = key,
         };
         
-        using GetObjectResponse response = await client.GetObjectAsync(request);
+        using var response = await client.GetObjectAsync(request);
         
         try
         {
             await response.WriteResponseStreamToFileAsync($"{pathToSave}\\{key}", true, CancellationToken.None);
-            Console.WriteLine(response.HttpStatusCode == System.Net.HttpStatusCode.OK);
+            return response.HttpStatusCode == System.Net.HttpStatusCode.OK;
         }
         catch (AmazonS3Exception ex)
         {
             Console.WriteLine($"Error saving {"csv"}: {ex.Message}");
+            return false;
         }
     }
 }
