@@ -7,6 +7,11 @@ namespace Core.Interfaces
         public string basePath;
         protected AWSCredentials Credentials => GetCredentials();
         
-        public abstract BasicAWSCredentials GetCredentials();
+        private BasicAWSCredentials GetCredentials()
+        {
+            var secretKey = Environment.GetEnvironmentVariable($"{basePath}SECRET_KEY");
+            var accessKeyId = Environment.GetEnvironmentVariable($"{basePath}ACCESS_KEY");
+            return new BasicAWSCredentials(accessKeyId, secretKey);
+        }
     }
 }

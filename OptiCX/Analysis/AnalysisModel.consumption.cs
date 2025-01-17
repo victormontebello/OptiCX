@@ -3,24 +3,24 @@ using Microsoft.ML;
 using Microsoft.ML.Data;
 namespace Analysis
 {
-    public partial class Model
+    public partial class AnalysisModel
     {
         public class ModelInput
         {
             [LoadColumn(0)]
-            [ColumnName(@"FeedBack")]
-            public string FeedBack { get; set; }
-            
-            [ColumnName(@"Sentiment")]
+            [ColumnName(@"Text")]
+            public string Text { get; set; }
+
             [LoadColumn(1)]
-            public float Sentiment { get; set; }
+            [ColumnName(@"Sentiment")]
+            public string Sentiment { get; set; }
 
         }
 
         public class ModelOutput
         {
-            [ColumnName(@"FeedBack")]
-            public float[] FeedBack { get; set; }
+            [ColumnName(@"Text")]
+            public float[] Text { get; set; }
 
             [ColumnName(@"Sentiment")]
             public uint Sentiment { get; set; }
@@ -29,14 +29,14 @@ namespace Analysis
             public float[] Features { get; set; }
 
             [ColumnName(@"PredictedLabel")]
-            public float PredictedLabel { get; set; }
+            public string PredictedLabel { get; set; }
 
             [ColumnName(@"Score")]
             public float[] Score { get; set; }
 
         }
 
-        private static string MLNetModelPath = Path.Combine("C:\\Users\\Usuario\\victorpessoal\\OptiCX\\OptiCX\\Analysis","Model.mlnet");
+        private static string MLNetModelPath = new FileInfo("AnalysisModel.mlnet").FullName;
 
         public static readonly Lazy<PredictionEngine<ModelInput, ModelOutput>> PredictEngine = new Lazy<PredictionEngine<ModelInput, ModelOutput>>(() => CreatePredictEngine(), true);
 
@@ -44,8 +44,7 @@ namespace Analysis
         private static PredictionEngine<ModelInput, ModelOutput> CreatePredictEngine()
         {
             var mlContext = new MLContext();
-            var info = new FileInfo("Model.mlnet");
-            ITransformer mlModel = mlContext.Model.Load(info.FullName, out var _);
+            ITransformer mlModel = mlContext.Model.Load(MLNetModelPath, out var _);
             return mlContext.Model.CreatePredictionEngine<ModelInput, ModelOutput>(mlModel);
         }
 
@@ -81,7 +80,7 @@ namespace Analysis
                 throw new Exception("Sentiment column not found. Make sure the name searched for matches the name in the schema.");
             }
 
-            var keyNames = new VBuffer<float>();
+            var keyNames = new VBuffer<ReadOnlyMemory<char>>();
             labelColumn.Value.GetKeyValues(ref keyNames);
             return keyNames.DenseValues().Select(x => x.ToString());
         }
