@@ -1,5 +1,4 @@
 ﻿using Amazon;
-using Amazon.Runtime;
 using Amazon.S3;
 using Amazon.S3.Model;
 using Core.Interfaces;
@@ -29,13 +28,6 @@ public class BucketService : AmazonResource
         {
             Console.WriteLine($"Error saving {"csv"}: {ex.Message}");
         }
-    }
-    
-    public override BasicAWSCredentials GetCredentials()
-    {
-        var secretKey = Environment.GetEnvironmentVariable($"{basePath}SECRET_KEY");
-        var accessKeyId = Environment.GetEnvironmentVariable($"{basePath}ACCESS_KEY");
-        return new BasicAWSCredentials(accessKeyId, secretKey);
     }
 }
 
