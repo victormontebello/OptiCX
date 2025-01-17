@@ -1,19 +1,17 @@
-using Amazon;
+﻿using Amazon;
 using Amazon.Runtime;
 using Amazon.S3;
 using Amazon.S3.Model;
+using Core.Interfaces;
 
-namespace Core.Files;
+namespace Infraestructure.S3;
 
-public class S3Service
+public class BucketService : AmazonResource 
 {
-    public async Task GetCSV(string pathToSave, string key)
+    public async Task GetObject(string pathToSave, string key)
     {
-        const string basePath = "S3_OPTICX_";
-        var secretKey = Environment.GetEnvironmentVariable($"{basePath}SECRET_KEY");
-        var accessKeyId = Environment.GetEnvironmentVariable($"{basePath}ACCESS_KEY");
-        var credentials = new BasicAWSCredentials(accessKeyId, secretKey);
-        var client = new AmazonS3Client(credentials, RegionEndpoint.USEast2);
+        basePath = "S3_OPTICX_";
+        var client = new AmazonS3Client(Credentials, RegionEndpoint.USEast2);
         var request = new GetObjectRequest()
         {
             BucketName = Environment.GetEnvironmentVariable($"{basePath}BUCKET_NAME"),
@@ -32,4 +30,12 @@ public class S3Service
             Console.WriteLine($"Error saving {"csv"}: {ex.Message}");
         }
     }
+    
+    public override BasicAWSCredentials GetCredentials()
+    {
+        var secretKey = Environment.GetEnvironmentVariable($"{basePath}SECRET_KEY");
+        var accessKeyId = Environment.GetEnvironmentVariable($"{basePath}ACCESS_KEY");
+        return new BasicAWSCredentials(accessKeyId, secretKey);
+    }
 }
+
