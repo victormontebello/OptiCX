@@ -1,7 +1,7 @@
 ﻿using Amazon;
 using Amazon.S3;
 using Amazon.S3.Model;
-using Core.Interfaces;
+using Core.Abstract;
 
 namespace Infraestructure.S3;
 
@@ -9,11 +9,11 @@ public class BucketService : AmazonResource
 {
     public async Task<bool> GetObject(string pathToSave, string key)
     {
-        basePath = "S3_OPTICX_";
+        BASE_PATH = "S3_OPTICX_";
         var client = new AmazonS3Client(Credentials, RegionEndpoint.USEast2);
         var request = new GetObjectRequest()
         {
-            BucketName = Environment.GetEnvironmentVariable($"{basePath}BUCKET_NAME"),
+            BucketName = Environment.GetEnvironmentVariable($"{BASE_PATH}BUCKET_NAME"),
             Key = key,
         };
         
