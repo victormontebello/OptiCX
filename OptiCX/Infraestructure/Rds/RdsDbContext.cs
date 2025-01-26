@@ -13,12 +13,4 @@ public class RdsDbContext : DbContext
     public RdsDbContext(DbContextOptions<RdsDbContext> options) : base(options)
     {
     }
-
-    protected override void OnModelCreating(ModelBuilder builder) => base.OnModelCreating(builder);
-
-    public override int SaveChanges()
-    {
-        ChangeTracker.DetectChanges();
-        return base.SaveChanges();
-    }
 }

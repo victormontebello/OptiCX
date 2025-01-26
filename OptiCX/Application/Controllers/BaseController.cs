@@ -1,4 +1,3 @@
-using Infraestructure.Rds;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Application.Controllers;
@@ -7,11 +6,7 @@ namespace Application.Controllers;
 [Route("api/[controller]")]
 public class BaseController : ControllerBase
 {
-    private readonly RdsDbContext _context;
-    public BaseController(RdsDbContext context)
-    {
-        _context = context;
-    }
+    public BaseController() => Ok("Healthy");
     
     [HttpGet]
     public OkObjectResult HealthCheck() => Ok("Healthy");
