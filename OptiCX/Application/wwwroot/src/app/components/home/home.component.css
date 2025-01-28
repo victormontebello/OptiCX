@@ -1,0 +1,32 @@
+.body {
+    background-color: white; /* 60% */
+    color: black; /* 30% */
+}
+
+.header {
+    background-color: blue; /* 10% */
+}
+
+.footer {
+    background-color: blue; /* 10% */
+}
+
+.main-content {
+    padding: 20px;
+}
+
+.section {
+    margin: 20px 0;
+}
+
+.button {
+    background-color: blue;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: darkblue;
+}

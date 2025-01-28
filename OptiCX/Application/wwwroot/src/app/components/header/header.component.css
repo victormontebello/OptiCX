@@ -1,0 +1,16 @@
+.body {
+    background-color: white; /* 60% */
+    color: black; /* 30% */
+}
+
+.header {
+    background-color: blue; /* 10% */
+    padding: 20px;
+    text-align: center;
+}
+
+.footer {
+    background-color: blue; /* 10% */
+    padding: 10px;
+    text-align: center;
+}
