@@ -1,11 +1,8 @@
-<div class="header">
-    <h1>Welcome to Our Customer Experience App</h1>
+<header>
+  <div class="container">
+    <a routerLink="/" class="logo">CX App</a>
     <nav>
-      <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/services">Services</a></li>
-        <li><a href="/contact">Contact</a></li>
-      </ul>
+      <a *ngFor="let item of menuItems" routerLink={{item.route}}>{{item.name}}</a>
     </nav>
   </div>
+</header>

@@ -1,16 +1,24 @@
-.body {
-    background-color: white; /* 60% */
-    color: black; /* 30% */
-}
-
-.header {
-    background-color: blue; /* 10% */
-    padding: 20px;
-    text-align: center;
-}
-
-.footer {
-    background-color: blue; /* 10% */
-    padding: 10px;
-    text-align: center;
-}
+header {
+    background-color: black;
+    color: white;
+    padding: 1rem 0;
+  }
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+  .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+  }
+  nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 1rem;
+  }
