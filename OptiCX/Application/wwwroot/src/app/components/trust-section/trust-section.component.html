@@ -2,12 +2,11 @@
     <p>Trusted by 50,000+ businesses for innovative design and growth.</p>
   
     <div class="logos">
-      <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-emLWHRJaFWJDg0STJw1KPJX0sM9n3d.png" alt="Optimal">
-      <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-emLWHRJaFWJDg0STJw1KPJX0sM9n3d.png" alt="Vectra">
-      <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-emLWHRJaFWJDg0STJw1KPJX0sM9n3d.png" alt="Dexign">
-      <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-emLWHRJaFWJDg0STJw1KPJX0sM9n3d.png" alt="Signum">
-      <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-emLWHRJaFWJDg0STJw1KPJX0sM9n3d.png" alt="Visualy">
-      <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-emLWHRJaFWJDg0STJw1KPJX0sM9n3d.png" alt="Icon">
+      <div *ngFor="let feature of features">
+        <div class="icon">{{feature.icon}}</div>
+        <h3>{{ feature.title }}</h3>
+        <p>{{ feature.description }}</p>
+      </div>
     </div>
   </section>
   

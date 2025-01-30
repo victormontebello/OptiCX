@@ -15,11 +15,16 @@
     flex-wrap: wrap;
     justify-content: center;
     gap: 3rem;
-    opacity: 0.5;
+    opacity: 1;
   }
   
   .logos img {
     height: 32px;
+  }
+
+  .icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
   }
   
   
