@@ -1,0 +1,32 @@
+<footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>CX App</h3>
+            <p>Elevating customer experiences through innovative technology.</p>
+          </div>
+          <div class="footer-section">
+            <h4>Quick Links</h4>
+            <ul>
+              <li *ngFor="let link of quickLinks">
+                <a [routerLink]="link.route">{{link.name}}</a>
+              </li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h4>Contact</h4>
+            <p>Email:</p>
+            <p>Phone:</p>
+          </div>
+          <div class="footer-section">
+            <h4>Follow Us</h4>
+            <div class="social-links">
+              <a *ngFor="let social of socialLinks" [href]="social.href">{{social.name}}</a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>copy; {{currentYear}} CX App. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
