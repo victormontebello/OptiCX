@@ -1,8 +1,8 @@
 <header>
   <div class="container">
-    <a routerLink="/" class="logo">CX App</a>
+    <a routerLink="/" class="logo">OptiCX</a>
     <nav>
-      <a *ngFor="let item of menuItems" routerLink={{item.route}}>{{item.name}}</a>
+      <a *ngFor="let item of menuItems" [routerLink]="item.route">{{item.name}}</a>
     </nav>
   </div>
 </header>

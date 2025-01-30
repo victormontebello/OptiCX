@@ -16,6 +16,9 @@ interface Feature {
 })
 
 export class FeaturesComponent {
+  heroTitle = "Elevate Your Customer Experience"
+  heroDescription =
+    "Our cutting-edge CX application helps you understand, engage, and delight your customers like never before."
   features: Feature[] = [
     {
       icon: "👥",
