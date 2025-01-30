@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FeaturesComponent } from './features.component';
+import { TrustSectionComponent } from './trust-section.component';
 
-describe('FeaturesComponent', () => {
-  let component: FeaturesComponent;
-  let fixture: ComponentFixture<FeaturesComponent>;
+describe('TrustSectionComponent', () => {
+  let component: TrustSectionComponent;
+  let fixture: ComponentFixture<TrustSectionComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [FeaturesComponent]
+      imports: [TrustSectionComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(FeaturesComponent);
+    fixture = TestBed.createComponent(TrustSectionComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

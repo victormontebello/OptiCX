@@ -1,8 +1,17 @@
-<header>
-  <div class="container">
-    <a routerLink="/" class="logo">OptiCX</a>
-    <nav>
-      <a *ngFor="let item of menuItems" [routerLink]="item.route">{{item.name}}</a>
-    </nav>
+<nav>
+  <div class="logo">
+    <div class="logo-icon">
+      <div class="logo-inner"></div>
+    </div>
+    <span>OptiCX</span>
   </div>
-</header>
+  
+  <div class="nav-links">
+    <a href="#" class="active">Home</a>
+    <a href="#">Changelog</a>
+    <a href="#">Waitlist</a>
+  </div>
+
+  <button class="contact-btn">Contact us</button>
+</nav>
+

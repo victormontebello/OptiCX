@@ -1,0 +1,25 @@
+.trust {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem 6rem;
+    text-align: center;
+  }
+  
+  .trust p {
+    color: #999;
+    margin-bottom: 3rem;
+  }
+  
+  .logos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 3rem;
+    opacity: 0.5;
+  }
+  
+  .logos img {
+    height: 32px;
+  }
+  
+  
