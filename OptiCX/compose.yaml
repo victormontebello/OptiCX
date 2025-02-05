@@ -1,6 +1,25 @@
 ﻿services:
   application:
     image: application
+    container_name: App
     build:
       context: .
       dockerfile: Application/Dockerfile
+    environment:
+      - AWS_RDS_ENDPOINT=opti-base.cbysqoq46gkm.sa-east-1.rds.amazonaws.com
+    ports:
+      - 5000:8080
+      - 5001:8081
+  
+  keycloak:
+    image: quay.io/keycloak/keycloak:latest
+    container_name: Keycloak
+    command: start-dev
+    environment:
+      - KC_HEALTH_ENABLED=true
+      - KEYCLOAK_ADMIN=admin
+      - KEYCLOAK_ADMIN_PASSWORD=admin
+    volumes:
+      - ./.containers/identity:/opt/keycloak/data
+    ports:
+      - 7105:8080
